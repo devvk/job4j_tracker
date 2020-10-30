@@ -1,6 +1,7 @@
 package ru.job4j.inheritance;
 
 public class Shop {
+
     public static void main(String[] args) {
         Product product = of("Oil", 100);
         System.out.println(product.label());

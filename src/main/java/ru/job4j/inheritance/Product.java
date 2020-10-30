@@ -1,6 +1,7 @@
 package ru.job4j.inheritance;
 
-public class Product {
+public final class Product {
+
     private String name;
     private int price;
 

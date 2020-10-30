@@ -1,11 +1,16 @@
 package ru.job4j.inheritance;
 
-public final class LiquidationProduct extends Product {
+/**
+ * Пример кмпозиции
+ */
+public final class LiquidationProduct {
+
+    private final Product product;
+
     public LiquidationProduct(String name, int price) {
-        super(name, price);
+        product = new Product(name, price);
     }
 
-    @Override
     public int discount() {
         return 90;
     }
