@@ -1,7 +1,7 @@
 package ru.job4j.inheritance;
 
 /**
- * Пример кмпозиции
+ * Пример композиции
  */
 public final class LiquidationProduct {
 
@@ -13,6 +13,10 @@ public final class LiquidationProduct {
 
     public int discount() {
         return 90;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }
 
