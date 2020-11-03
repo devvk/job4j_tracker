@@ -13,6 +13,36 @@ public class Tracker {
         return item;
     }
 
+    /**
+     * Найти ячейку с id приходящем в параметре
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getId() == id) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    public Item findById(int id) {
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+
+    public boolean replace(int id, Item item) {
+        boolean rsl = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            item.setId(items[index].getId());
+            items[index] = item;
+            rsl = true;
+        }
+        return rsl;
+    }
+
     public Item[] findAll() {
         Item[] rsl = new Item[size];
         for (int i = 0; i < size; i++) {
@@ -34,15 +64,4 @@ public class Tracker {
         return Arrays.copyOf(rsl, counter);
     }
 
-    public Item findById(int id) {
-        Item rsl = null;
-        for (int i = 0; i < size; i++) {
-            Item item = items[i];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
-    }
 }
