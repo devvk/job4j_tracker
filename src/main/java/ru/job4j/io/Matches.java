@@ -9,7 +9,9 @@ public class Matches {
             System.out.print("Введите число от 1 до 3 для игрока №1: ");
             Scanner input1 = new Scanner(System.in);
             int score1 = Integer.valueOf(input1.nextLine());
-            count -= score1;
+            if (score1 >= 1 && score1 <= 3) {
+                count -= score1;
+            }
             System.out.println("Количество спичек на столе: " + count);
             System.out.print("Введите число от 1 до 3 для игрока №2: ");
             Scanner input2 = new Scanner(System.in);
