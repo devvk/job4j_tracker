@@ -58,12 +58,7 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] rsl = new Item[size];
-        for (int i = 0; i < size; i++) {
-            Item item = items[i];
-            rsl[i] = item;
-        }
-        return rsl;
+        return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
