@@ -16,6 +16,9 @@ public class Matches {
                 player = !player;
             }
             System.out.println("Количество спичек на столе: " + count);
+            if (count <= 0) {
+                System.out.println("Игра окончена! Победитель: " + name);
+            }
         }
     }
 }
