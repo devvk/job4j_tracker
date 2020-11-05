@@ -6,11 +6,11 @@ public class Matches {
     public static void main(String[] args) {
         int count = 11;
         boolean player = true;
-        Scanner input1 = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         while (count > 0) {
             String name = player ? "player №1" : "player №2";
             System.out.print("Введите число от 1 до 3 для " + name + ": ");
-            int score = Integer.parseInt(input1.nextLine());
+            int score = Integer.parseInt(input.nextLine());
             if (score >= 1 && score <= 3) {
                 count -= score;
                 player = !player;
