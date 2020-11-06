@@ -8,6 +8,61 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
 
+    @Test
+    public void whenFindById() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "New item", "1"}
+        );
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("New item"));
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()).getId(), is(1));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "New item", "1"}
+        );
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("New item"));
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
+    }
+
+    @Test
+    public void whenFindAll() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0", "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new FindAllAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. FindAll" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find all items ====" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. FindAll" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+        ));
+    }
+
     /**
      * 1. Трекер загружается с одним действием - "выйти".
      * 2. На консоль выводится пункт "Выйти".
@@ -38,16 +93,16 @@ public class StartUITest {
      */
     @Test
     public void whenCreateItem() {
-        Output output = new StubOutput();
+        Output out = new StubOutput();
         Input in = new StubInput(
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(output),
-                new ExitAction(output)
+                new CreateAction(out),
+                new ExitAction(out)
         };
-        new StartUI(output).init(in, tracker, actions);
+        new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 
