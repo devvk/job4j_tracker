@@ -47,20 +47,13 @@ public class StartUITest {
                 new String[]{"0", "1"}
         );
         Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("New item"));
         UserAction[] actions = {
                 new FindAllAction(out),
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator()
-                        + "0. FindAll" + System.lineSeparator()
-                        + "1. Exit" + System.lineSeparator()
-                        + "=== Find all items ====" + System.lineSeparator()
-                        + "Menu." + System.lineSeparator()
-                        + "0. FindAll" + System.lineSeparator()
-                        + "1. Exit" + System.lineSeparator()
-        ));
+        assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
     }
 
     /**
