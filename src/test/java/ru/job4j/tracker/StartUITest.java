@@ -12,16 +12,28 @@ public class StartUITest {
     public void whenFindById() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"0", "New item", "1"}
+                new String[]{"0", "1", "1"}
         );
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("New item"));
         UserAction[] actions = {
-                new FindByNameAction(out),
+                new FindByIdAction(out),
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getId(), is(1));
+        //assertThat(tracker.findById(item.getId()).getId(), is(1));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. FindById" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find item by id ====" + System.lineSeparator()
+                        + "Item {id=" + item.getId()
+                        + ", name='" + item.getName() + "', "
+                        + "created=" + item.getCreated() + "}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. FindById" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+        ));
     }
 
     @Test
@@ -37,7 +49,19 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
+        //assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. FindByName" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find item by name ====" + System.lineSeparator()
+                        + "Item {id=" + item.getId()
+                        + ", name='" + item.getName() + "', "
+                        + "created=" + item.getCreated() + "}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. FindByName" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+        ));
     }
 
     @Test
