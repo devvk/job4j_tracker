@@ -53,7 +53,19 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
+        //assertThat(tracker.findByName(item.getName())[0].getName(), is("New item"));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. FindAll" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find all items ====" + System.lineSeparator()
+                        + "Item {id=" + item.getId()
+                        + ", name='" + item.getName() + "', "
+                        + "created=" + item.getCreated() + "}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. FindAll" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+        ));
     }
 
     /**
