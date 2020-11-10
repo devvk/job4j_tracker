@@ -4,7 +4,7 @@ public class StartUI {
 
     private final Output out;
 
-    public StartUI(Output out) {
+    public  StartUI(Output out) {
         this.out = out;
     }
 
@@ -36,18 +36,18 @@ public class StartUI {
      * 4. У полученного объекта вызываем метод execute с передачей параметров input и tracker.
      */
     public static void main(String[] args) {
-        Output out = new ConsoleOutput();
-        Input input = new ValidateInput();
+        Output output = new ConsoleOutput();
+        Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(out),
-                new FindAllAction(out),
-                new ReplaceAction(out),
-                new DeleteAction(out),
-                new FindByIdAction(out),
-                new FindByNameAction(out),
-                new ExitAction(out),
+                new CreateAction(output),
+                new FindAllAction(output),
+                new ReplaceAction(output),
+                new DeleteAction(output),
+                new FindByIdAction(output),
+                new FindByNameAction(output),
+                new ExitAction(output),
         };
-        new StartUI(out).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
     }
 }
