@@ -1,5 +1,7 @@
 package ru.job4j.singleton;
 
+import ru.job4j.tracker.Tracker;
+
 /**
  * Объект класса находиться в поле внутреннего класса.
  * Ленивая загрузка (Lazy loading) происходит, когда мы явно обращаемся к объекту.
@@ -9,16 +11,15 @@ public class TrackerSingleStaticLazy {
     private TrackerSingleStaticLazy() {
     }
 
-    public static TrackerSingleStaticLazy getInstance() {
+    public static Tracker getInstance() {
         return Holder.INSTANCE;
     }
 
     private static final class Holder {
-        private static final TrackerSingleStaticLazy INSTANCE = new TrackerSingleStaticLazy();
+        private static final Tracker INSTANCE = new Tracker();
     }
 
     public static void main(String[] args) {
-        TrackerSingleStaticLazy tracker = TrackerSingleStaticLazy.getInstance();
-        System.out.println(tracker);
+        Tracker tracker = TrackerSingleStaticLazy.getInstance();
     }
 }
