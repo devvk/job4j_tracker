@@ -43,7 +43,6 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        //assertThat(tracker.findById(item.getId()).getId(), is(1));
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
                         + "0. FindById" + System.lineSeparator()
