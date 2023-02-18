@@ -1,19 +1,29 @@
 package ru.job4j.oop;
 
-import static org.hamcrest.Matchers.closeTo;
-import static org.junit.Assert.assertThat;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.offset;
 
 public class TriangleTest {
 
     @Test
-    public void period() {
+    public void triangleExist() {
         Point a = new Point(0, 0);
         Point b = new Point(4, 0);
         Point c = new Point(0, 4);
         Triangle triangle = new Triangle(a, b, c);
-        double rsl = triangle.area();
-        assertThat(rsl, closeTo(8, 0.001));
+        double result = triangle.area();
+        assertThat(result).isEqualTo(8, offset(0.001));
+    }
+
+    @Test
+    public void triangleNotExist() {
+        Point a = new Point(4, 0);
+        Point b = new Point(4, 0);
+        Point c = new Point(0, 4);
+        Triangle triangle = new Triangle(a, b, c);
+        double result = triangle.area();
+        assertThat(result).isEqualTo(-1);
     }
 }

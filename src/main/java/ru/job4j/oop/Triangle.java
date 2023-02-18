@@ -14,15 +14,16 @@ public class Triangle {
     }
 
     /**
+     * Метод выполняет рассчёт полупериметра треугольника.
      * Полупериметр треугольника – это сумма длин всех его сторон, деленная на два.
      * Полупериметр обозначается буквой p.
      */
-    public double period(double a, double b, double c) {
+    public double semiPerimeter(double a, double b, double c) {
         return (a + b + c) / 2;
     }
 
     /**
-     * Существует ли треугольник.
+     * Метод проверяет существует ли треугольник.
      * Чтобы треугольник существовал, сумма двух сторон треугольника всегда должна
      * быть больше третей стороны.
      * a + b > c, b + c > a, a + c > b.
@@ -31,12 +32,17 @@ public class Triangle {
         return (ab + ac > bc) && (ab + bc > ac) && (bc + ac > ab);
     }
 
+    /**
+     * Метод рассчитывает площадь треугольника согласно формуле Герона.
+     *
+     * @return Если фигуря является треугольником, то метод вернет его площадь, иначе -1.
+     */
     public double area() {
         double rsl = -1;
         double ab = first.distance(second);
         double ac = first.distance(third);
         double bc = second.distance(third);
-        double p = period(ab, ac, bc);
+        double p = semiPerimeter(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             rsl = sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
