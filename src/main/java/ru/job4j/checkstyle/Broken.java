@@ -14,20 +14,20 @@ public class Broken {
         this.surname = surname;
     }
 
-    void echo() {
+    public void echo() {
         System.out.println("Name: " + name);
         System.out.println("Surname: " + surname);
         System.out.println("size: " + size);
         System.out.println(NEW_VALUE);
     }
 
-    void media(Object obj) {
+    public void media(Object obj) {
         if (obj != null) {
             System.out.println(obj);
         }
     }
 
-    void method(int a, int b, int c, int d, int e, int f, int g) {
+    public void method(int a, int b, int c, int d, int e, int f, int g) {
         System.out.println(size + a + b + c + d + e + f + g);
     }
 
