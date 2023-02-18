@@ -20,6 +20,12 @@ public class Point {
      */
     private int z;
 
+    /**
+     * Конструктор.
+     *
+     * @param x координата x
+     * @param y координата y
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
@@ -28,13 +34,12 @@ public class Point {
     /**
      * Конструктор.
      *
-     * @param x координата
-     * @param y координата
-     * @param z координата
+     * @param x координата x
+     * @param y координата y
+     * @param z координата z
      */
     public Point(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
+        this(x, y);
         this.z = z;
     }
 
