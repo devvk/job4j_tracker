@@ -30,6 +30,5 @@ public class Error {
         error2.printInfo();
         Error error3 = new Error(false, 2, "error3");
         error3.printInfo();
-
     }
 }
