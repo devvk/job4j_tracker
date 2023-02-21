@@ -10,5 +10,6 @@ public class CarMain {
         transmission.accelerate();
         brakes.brake();
         tripComputer.printInfo();
+        System.out.println(Car.Manual.getManual());
     }
 }
