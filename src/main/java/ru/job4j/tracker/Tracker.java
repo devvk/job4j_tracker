@@ -40,7 +40,7 @@ public class Tracker {
      *
      * @param id   Id заявки, которую необходимо заменить
      * @param item Новая заявка
-     * @return true, если заменили, иначе -1
+     * @return true, если заменили, иначе false
      */
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
@@ -52,6 +52,12 @@ public class Tracker {
         return rsl;
     }
 
+    /**
+     * Удалить заявку.
+     *
+     * @param id Id заявки, которую нужно удалить
+     * @return true, если удалили, иначе false
+     */
     public boolean delete(int id) {
         int index = indexOf(id);
         boolean rsl = index != -1;
