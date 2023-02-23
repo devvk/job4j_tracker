@@ -37,7 +37,7 @@ public class Product {
             return false;
         }
         Product product = (Product) o;
-        return count == product.count && name.equals(product.name);
+        return count == product.count && name != null && name.equals(product.name);
     }
 
     @Override
@@ -45,4 +45,3 @@ public class Product {
         return Objects.hash(name, count);
     }
 }
-
