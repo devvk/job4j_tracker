@@ -7,6 +7,9 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
+    /**
+     * Добавление новой заявки.
+     */
     public Item add(Item item) {
         item.setId(ids++);
         items[size++] = item;
@@ -14,7 +17,7 @@ public class Tracker {
     }
 
     /**
-     * Найти ячейку с id приходящем в параметре
+     * Найти заявку по id.
      */
     private int indexOf(int id) {
         int rsl = -1;
@@ -57,10 +60,16 @@ public class Tracker {
         return rsl;
     }
 
+    /**
+     * Получение списка всех заявок.
+     */
     public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
 
+    /**
+     * Получение списка по имени.
+     */
     public Item[] findByName(String key) {
         Item[] rsl = new Item[size];
         int counter = 0;
@@ -72,5 +81,4 @@ public class Tracker {
         }
         return Arrays.copyOf(rsl, counter);
     }
-
 }
