@@ -17,7 +17,7 @@ public class Tracker {
     }
 
     /**
-     * Найти заявку по id.
+     * Поиск индекса заявки по её id.
      */
     private int indexOf(int id) {
         int rsl = -1;
@@ -35,13 +35,19 @@ public class Tracker {
         return index != -1 ? items[index] : null;
     }
 
+    /**
+     * Заменить заявку.
+     *
+     * @param id   Id заявки, которую необходимо заменить
+     * @param item Новая заявка
+     * @return true, если заменили, иначе -1
+     */
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (index != -1) {
             item.setId(items[index].getId());
             items[index] = item;
-            rsl = true;
         }
         return rsl;
     }
@@ -51,9 +57,8 @@ public class Tracker {
         boolean rsl = index != -1;
         if (index != -1) {
             int start = index + 1;
-            int distPos = index;
             int length = size - index;
-            System.arraycopy(items, start, items, distPos, length);
+            System.arraycopy(items, start, items, index, length);
             items[size - 1] = null;
             size--;
         }
