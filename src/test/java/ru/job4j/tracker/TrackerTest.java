@@ -65,6 +65,17 @@ public class TrackerTest {
     }
 
     @Test
+    public void whenReplaceItemIsSuccessfulAndReturnIsTrue() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("Bug");
+        tracker.add(item);
+        int id = item.getId();
+        Item updateItem = new Item("Bug with description");
+        boolean result = tracker.replace(id, updateItem);
+        assertThat(result).isTrue();
+    }
+
+    @Test
     public void whenReplaceItemIsNotSuccessful() {
         Tracker tracker = new Tracker();
         Item item = new Item("Bug");
