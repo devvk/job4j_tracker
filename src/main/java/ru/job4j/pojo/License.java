@@ -50,7 +50,7 @@ public class License {
             return false;
         }
         License license = (License) o;
-        return code != null && code.equals(license.code);
+        return Objects.equals(code, license.code);
     }
 
     @Override
