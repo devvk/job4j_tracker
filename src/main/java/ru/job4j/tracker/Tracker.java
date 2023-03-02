@@ -55,20 +55,18 @@ public class Tracker {
     /**
      * Удаление заявки.
      *
-     * @param id Id заявки, которую нужно удалить
+     * @param id Id заявки, которую необходимо удалить
      * @return true, если удалили, иначе false
      */
     public boolean delete(int id) {
         int index = indexOf(id);
-        boolean rsl = index != -1;
-        if (rsl) {
-            int start = index + 1;
-            int length = size - index;
-            System.arraycopy(items, start, items, index, length);
+        boolean result = index != -1;
+        if (result) {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
         }
-        return rsl;
+        return result;
     }
 
     /**
