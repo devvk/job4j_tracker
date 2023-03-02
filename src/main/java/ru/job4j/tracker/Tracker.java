@@ -91,17 +91,17 @@ public class Tracker {
      * Получение списка заявок по имени.
      *
      * @param name Имя заявки
-     * @return Массив заявок
+     * @return Массив заявок, иначе массив нулевой длины
      */
     public Item[] findByName(String name) {
-        Item[] rsl = new Item[size];
+        Item[] result = new Item[size];
         int counter = 0;
         for (int i = 0; i < size; i++) {
             Item item = items[i];
             if (item.getName().equals(name)) {
-                rsl[counter++] = item;
+                result[counter++] = item;
             }
         }
-        return Arrays.copyOf(rsl, counter);
+        return Arrays.copyOf(result, counter);
     }
 }
