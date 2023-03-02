@@ -17,19 +17,28 @@ public class Tracker {
     }
 
     /**
-     * Поиск индекса заявки по её id.
+     * Поиск индекса заявки по id.
+     *
+     * @param id Id заявки
+     * @return index найденной заявки, иначе -1
      */
     private int indexOf(int id) {
-        int rsl = -1;
+        int result = -1;
         for (int i = 0; i < size; i++) {
             if (items[i].getId() == id) {
-                rsl = i;
+                result = i;
                 break;
             }
         }
-        return rsl;
+        return result;
     }
 
+    /**
+     * Поиск заявки по id.
+     *
+     * @param id Id заявки
+     * @return Найденная заявка, иначе null
+     */
     public Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items[index] : null;
@@ -71,20 +80,25 @@ public class Tracker {
 
     /**
      * Получение списка всех заявок.
+     *
+     * @return Массив заявок
      */
     public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
 
     /**
-     * Получение списка по имени.
+     * Получение списка заявок по имени.
+     *
+     * @param name Имя заявки
+     * @return Массив заявок
      */
-    public Item[] findByName(String key) {
+    public Item[] findByName(String name) {
         Item[] rsl = new Item[size];
         int counter = 0;
         for (int i = 0; i < size; i++) {
             Item item = items[i];
-            if (item.getName().equals(key)) {
+            if (item.getName().equals(name)) {
                 rsl[counter++] = item;
             }
         }
