@@ -2,11 +2,6 @@ package ru.job4j.format;
 
 import java.util.Calendar;
 
-/**
- * <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Formatter.html">
- * https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Formatter.html
- * </a>
- */
 public class Format {
 
     public static void getGreeting(String name) {
