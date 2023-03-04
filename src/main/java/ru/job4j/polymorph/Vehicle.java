@@ -7,6 +7,9 @@ package ru.job4j.polymorph;
  * переключить передачу, но не задали абсолютно никакой реализации.
  */
 public interface Vehicle extends Fuel {
+
+    double FUEL_PRICE = 2.22;
+
     void accelerate();
 
     void brake();
@@ -17,5 +20,13 @@ public interface Vehicle extends Fuel {
 
     default void testMethod() {
         System.out.println("default testMethod() в interface Vehicle");
+    }
+
+    static void getDragCoefficient() {
+        System.out.println("Формула коэффициента аэродинамического сопротивления автомобиля");
+    }
+
+    default void chargeBattery() {
+        System.out.println("Аккумулятор под капотом. Зарядить.");
     }
 }

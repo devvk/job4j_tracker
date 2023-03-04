@@ -32,4 +32,9 @@ public class SportCar implements Vehicle, Fuel {
     public void testMethod() {
         System.out.println("Переопределенный testMethod() в class SportCar");
     }
+
+    @Override
+    public void chargeBattery() {
+        System.out.println("Аккумулятор в багажнике. Зарядить.");
+    }
 }
