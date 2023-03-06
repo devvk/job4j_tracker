@@ -10,5 +10,8 @@ public class College {
 
         /* up casting */
         Object object = new Freshman();
+
+        System.out.println(student);
+        System.out.println(object);
     }
 }
