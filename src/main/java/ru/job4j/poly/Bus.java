@@ -3,12 +3,7 @@ package ru.job4j.poly;
 public class Bus implements Transport, Vehicle {
     @Override
     public void move() {
-        System.out.println("drive");
-    }
-
-    @Override
-    public void type() {
-        System.out.println(getClass().getSimpleName());
+        System.out.println(type() + ": drive");
     }
 
     @Override

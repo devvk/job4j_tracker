@@ -3,5 +3,7 @@ package ru.job4j.poly;
 public interface Vehicle {
     void move();
 
-    void type();
+    default String type() {
+        return getClass().getSimpleName();
+    }
 }

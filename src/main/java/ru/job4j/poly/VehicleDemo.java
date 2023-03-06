@@ -8,7 +8,6 @@ public class VehicleDemo {
 
         Vehicle[] vehicles = new Vehicle[]{airplane, train, bus};
         for (Vehicle vehicle : vehicles) {
-            vehicle.type();
             vehicle.move();
         }
     }
