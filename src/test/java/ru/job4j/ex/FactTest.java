@@ -1,12 +1,17 @@
 package ru.job4j.ex;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FactTest {
 
-    @Test(expected = IllegalArgumentException.class)
-    public void whenNLessThen0() {
-        Fact fact = new Fact();
-        int rsl = fact.calc(-1);
+    @Test
+    public void whenException() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> new Fact().calc(-3));
+        assertThat(exception.getMessage()).isEqualTo("N could not be less then 0.");
     }
 }
