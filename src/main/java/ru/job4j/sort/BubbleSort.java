@@ -4,9 +4,8 @@ import java.util.Arrays;
 
 public class BubbleSort {
     public static void sort(int[] array) {
-        System.out.println("до: \t" + Arrays.toString(array));
-        for (int barier = array.length - 1; barier >= 0; barier--) {
-            for (int i = 0; i < barier; i++) {
+        for (int border = array.length - 1; border >= 0; border--) {
+            for (int i = 0; i < border; i++) {
                 if (array[i] > array[i + 1]) {
                     int tmp = array[i];
                     array[i] = array[i + 1];
@@ -14,11 +13,12 @@ public class BubbleSort {
                 }
             }
         }
-        System.out.println("после: \t" + Arrays.toString(array));
     }
 
     public static void main(String[] args) {
         int[] array = new int[]{34, 55, 2, 4, 1, 6, 12, 16, 10};
+        System.out.println("до: \t" + Arrays.toString(array));
         BubbleSort.sort(array);
+        System.out.println("после: \t" + Arrays.toString(array));
     }
 }
