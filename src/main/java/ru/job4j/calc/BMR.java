@@ -9,29 +9,20 @@ import java.math.RoundingMode;
  * <p>
  * Рассчёт базового обмена веществ по формуле Дрейера.
  * Рассчёт процентного отклонения.
+ * Контанта для женского пола: GENDER_FEMALE = new BigDecimal("0.1229");
  */
 public class BMR {
-    // ВЕС ТЕЛА
     public static final BigDecimal WEIGHT = new BigDecimal("73").multiply(new BigDecimal(1000));
-    //  ВОЗРАСТ
     public static final BigDecimal AGE = new BigDecimal("42");
-    // коэффициент exponent
     public static final double EXPONENT = 0.1333;
-    // константа для мужчин
     public static final BigDecimal GENDER_MALE = new BigDecimal("0.1015");
-    // константа для женщин
     //public static final BigDecimal GENDER_FEMALE = new BigDecimal("0.1229");
 
     public static void main(String[] args) {
-        // Указываем количество знаков после запятой
         MathContext mc = new MathContext(10);
-        // Вычисление квадратного корня с указанием контекста
         BigDecimal h1 = WEIGHT.sqrt(mc);
-        // Вычисление возврата в степень с использованием логарифма и экспоненты
         BigDecimal result = BigDecimal.valueOf(Math.pow(AGE.doubleValue(), EXPONENT));
-        // Вычисление знаменателя
         BigDecimal h2 = GENDER_MALE.multiply(result);
-        // BMR
         BigDecimal bmr = h1.divide(h2, mc);
         System.out.println("BMR: " + bmr.intValue() + " kcal.");
 
