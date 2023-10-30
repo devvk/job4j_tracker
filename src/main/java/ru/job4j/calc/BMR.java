@@ -16,7 +16,6 @@ public class BMR {
     public static final BigDecimal AGE = new BigDecimal("42");
     public static final double EXPONENT = 0.1333;
     public static final BigDecimal GENDER_MALE = new BigDecimal("0.1015");
-    //public static final BigDecimal GENDER_FEMALE = new BigDecimal("0.1229");
 
     public static void main(String[] args) {
         MathContext mc = new MathContext(10);
