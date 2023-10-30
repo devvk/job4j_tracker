@@ -7,16 +7,15 @@ public class SimpleStringEncoder {
         int counter = 1;
 
         for (int i = 1; i < input.length(); i++) {
-            char nextSymbol = input.charAt(i);
 
-            if (currentSymbol == nextSymbol) {
+            if (currentSymbol == input.charAt(i)) {
                 counter++;
             } else {
                 result.append(currentSymbol);
                 if (counter > 1) {
                     result.append(counter);
                 }
-                currentSymbol = nextSymbol;
+                currentSymbol = input.charAt(i);
                 counter = 1;
             }
         }
