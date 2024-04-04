@@ -1,7 +1,10 @@
 package ru.job4j.junit5;
 
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,7 +29,7 @@ class JUnitExampleTest {
         assertThat(result).isEqualTo(25);
     }
 
-    @Disabled
+    //@Disabled
     @Test
     void when5and5then25withDisabled() {
         JUnitExample example = new JUnitExample();
