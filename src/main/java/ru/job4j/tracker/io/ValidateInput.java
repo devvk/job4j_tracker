@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.io;
 
 /**
  * Класс ValidateInput получает данные из системы ввода до тех пор,
