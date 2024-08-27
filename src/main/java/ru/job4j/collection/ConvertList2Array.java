@@ -4,12 +4,6 @@ import java.util.List;
 
 public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
-        if (list == null) {
-            throw new IllegalArgumentException("List cannot be null.");
-        }
-        if (cells <= 0) {
-            throw new IllegalArgumentException("Cells must be greater than 0.");
-        }
         int size = list.size();
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
