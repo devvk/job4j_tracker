@@ -1,11 +1,10 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Tracker {
-    private final List<Item> items = new ArrayList<>(100);
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
     /**
@@ -24,12 +23,14 @@ public class Tracker {
      * @return index найденной заявки, иначе -1
      */
     private int indexOf(int id) {
-        for (Item item : items) {
-            if (item.getId() == id) {
-                return items.indexOf(item);
+        int result = -1;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                result = i;
+                break;
             }
         }
-        return -1;
+        return result;
     }
 
     /**
@@ -81,7 +82,7 @@ public class Tracker {
      * @return Список заявок
      */
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
     /**
@@ -97,6 +98,6 @@ public class Tracker {
                 result.add(item);
             }
         }
-        return !result.isEmpty() ? result : Collections.emptyList();
+        return result;
     }
 }
