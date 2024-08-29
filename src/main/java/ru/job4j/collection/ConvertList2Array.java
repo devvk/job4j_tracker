@@ -4,13 +4,16 @@ import java.util.List;
 
 public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
-        int size = list.size();
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
-        for (int i = 0; i < size; i++) {
-            int row = i / cells;
-            int cell = i % cells;
-            array[row][cell] = list.get(i);
+        int row = 0;
+        int cell = 0;
+        for (Integer number : list) {
+            array[row][cell++] = number;
+            if (cell == cells) {
+                row++;
+                cell = 0;
+            }
         }
         return array;
     }
