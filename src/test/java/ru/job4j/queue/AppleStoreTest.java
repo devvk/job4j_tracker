@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AppleStoreTest {
     @Test
-    void whenGetLast() {
+    void whenGetLastHappy() {
         Queue<Customer> customers = new LinkedList<>();
         customers.add(new Customer("Petr", 1000));
         customers.add(new Customer("Stas", 1500));
@@ -25,7 +25,18 @@ class AppleStoreTest {
     }
 
     @Test
-    void whenGetFirst() {
+    void whenGetLastHappyIsNull() {
+        Queue<Customer> customers = new LinkedList<>();
+        customers.add(new Customer("Petr", 1000));
+        customers.add(new Customer("Stas", 1500));
+        int count = 3;
+        AppleStore appleStore = new AppleStore(customers, count);
+        String customer = appleStore.getLastHappyCustomer();
+        assertThat(customer).isNull();
+    }
+
+    @Test
+    void whenGetFirstUpset() {
         Queue<Customer> customers = new LinkedList<>();
         customers.add(new Customer("Petr", 1000));
         customers.add(new Customer("Stas", 1500));
@@ -38,5 +49,14 @@ class AppleStoreTest {
         AppleStore appleStore = new AppleStore(customers, count);
         String customer = appleStore.getFirstUpsetCustomer();
         assertThat(customer).isEqualTo("Iryna");
+    }
+
+    @Test
+    void whenGetFirstUpsetIsNull() {
+        Queue<Customer> customers = new LinkedList<>();
+        int count = 10;
+        AppleStore appleStore = new AppleStore(customers, count);
+        String customer = appleStore.getFirstUpsetCustomer();
+        assertThat(customer).isNull();
     }
 }
