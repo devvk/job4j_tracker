@@ -23,12 +23,7 @@ public class BankService {
      * @param passport Паспорт пользователя.
      */
     public void deleteUser(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                users.remove(user);
-                break;
-            }
-        }
+        users.remove((new User(passport, "")));
     }
 
     /**
