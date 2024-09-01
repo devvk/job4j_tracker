@@ -1,6 +1,9 @@
 package ru.job4j.hashmap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AnalyzeByMap {
 
@@ -86,8 +89,15 @@ public class AnalyzeByMap {
             }
             pupilsSumScores.add(new Label(pupil.name(), totalScore));
         }
-        pupilsSumScores.sort(Comparator.naturalOrder());
-        return pupilsSumScores.getLast();
+        Label bestStudent = null;
+        double maxScore = 0;
+        for (Label label : pupilsSumScores) {
+            if (label.score() > maxScore) {
+                maxScore = label.score();
+                bestStudent = label;
+            }
+        }
+        return bestStudent;
     }
 
     /**
@@ -110,7 +120,14 @@ public class AnalyzeByMap {
         for (Map.Entry<String, Integer> entry : subjectScoresSum.entrySet()) {
             subjectsScores.add(new Label(entry.getKey(), entry.getValue()));
         }
-        subjectsScores.sort(Comparator.naturalOrder());
-        return subjectsScores.getLast();
+        Label bestSubject = null;
+        double maxScore = 0;
+        for (Label label : subjectsScores) {
+            if (label.score() > maxScore) {
+                maxScore = label.score();
+                bestSubject = label;
+            }
+        }
+        return bestSubject;
     }
 }
