@@ -31,7 +31,7 @@ class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(first);
         bank.addUser(second);
-        bank.deleteUser("343434");
+        assertThat(bank.deleteUser("343434")).isFalse();
         assertThat(bank.findByPassport(first.getPassport())).isEqualTo(first);
     }
 

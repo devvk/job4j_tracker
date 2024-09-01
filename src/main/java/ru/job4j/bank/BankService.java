@@ -21,9 +21,11 @@ public class BankService {
      * Удалить пользователя из системы.
      *
      * @param passport Паспорт пользователя.
+     * @return true, если пользователь был успешно удалён,
+     * false, если пользователь не найден.
      */
-    public void deleteUser(String passport) {
-        users.remove((new User(passport, "")));
+    public boolean deleteUser(String passport) {
+        return users.remove((new User(passport, ""))) != null;
     }
 
     /**
