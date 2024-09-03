@@ -5,6 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Сервис банка, который управляет пользователями и их счетами.
+ * Позволяет добавлять и удалять пользователей, добавлять счета,
+ * находить пользователей и счета,а также осуществлять переводы
+ * между счетами.
+ *
+ * @author Vitaliy Gold
+ * @version 1.0
+ */
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
