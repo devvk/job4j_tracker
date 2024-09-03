@@ -27,7 +27,7 @@ public class MaxScoreCalculation {
         }
         long start = System.currentTimeMillis();
         Collections.sort(list);
-        double maxScore = list.getLast().score();
+        double maxScore = list.get(list.size() - 1).score();
         long end = System.currentTimeMillis();
         System.out.printf("С сортировкой: maxScore = %.2f | Время выполнения: %s ms.\n",
                 maxScore, (end - start));
