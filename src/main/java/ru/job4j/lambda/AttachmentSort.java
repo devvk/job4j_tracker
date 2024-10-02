@@ -14,7 +14,7 @@ public class AttachmentSort {
         Comparator<Attachment> comparatorSize = new Comparator<>() {
             @Override
             public int compare(Attachment o1, Attachment o2) {
-                return Integer.compare(o1.getSize(), o2.getSize());
+                return Integer.compare(o1.size(), o2.size());
             }
         };
         attachments.sort(comparatorSize);
@@ -22,7 +22,7 @@ public class AttachmentSort {
         Comparator<Attachment> comparatorName = new Comparator<>() {
             @Override
             public int compare(Attachment o1, Attachment o2) {
-                return o1.getName().compareTo(o2.getName());
+                return o1.name().compareTo(o2.name());
             }
         };
         attachments.sort(comparatorName);

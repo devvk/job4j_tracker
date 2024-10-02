@@ -1,21 +1,6 @@
 package ru.job4j.lambda;
 
-public class Attachment {
-    private final String name;
-    private final int size;
-
-    public Attachment(String name, int size) {
-        this.name = name;
-        this.size = size;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getSize() {
-        return size;
-    }
+public record Attachment(String name, int size) {
 
     @Override
     public String toString() {
