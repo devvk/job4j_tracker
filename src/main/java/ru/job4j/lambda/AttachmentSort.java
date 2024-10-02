@@ -11,21 +11,21 @@ public class AttachmentSort {
                 new Attachment("image2", 32),
                 new Attachment("image3", 13)
         );
-        Comparator<Attachment> sizeComparator = new Comparator<>() {
+        Comparator<Attachment> comparatorSize = new Comparator<>() {
             @Override
             public int compare(Attachment o1, Attachment o2) {
                 return Integer.compare(o1.getSize(), o2.getSize());
             }
         };
-        attachments.sort(sizeComparator);
+        attachments.sort(comparatorSize);
         System.out.println(attachments);
-        Comparator<Attachment> nameComparator = new Comparator<>() {
+        Comparator<Attachment> comparatorName = new Comparator<>() {
             @Override
             public int compare(Attachment o1, Attachment o2) {
                 return o1.getName().compareTo(o2.getName());
             }
         };
-        attachments.sort(nameComparator);
+        attachments.sort(comparatorName);
         System.out.println(attachments);
     }
 }
