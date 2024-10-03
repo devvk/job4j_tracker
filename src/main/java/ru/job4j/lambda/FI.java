@@ -11,7 +11,8 @@ public class FI {
         Arrays.sort(strings, comparatorText);
         System.out.println(Arrays.toString(strings));
 
-        Comparator<String> comparatorDescSize = (left, right) -> right.length() - left.length();
+        Comparator<String> comparatorDescSize =
+                (left, right) -> Integer.compare(right.length(), left.length());
         Arrays.sort(strings, comparatorDescSize);
         System.out.println(Arrays.toString(strings));
     }
