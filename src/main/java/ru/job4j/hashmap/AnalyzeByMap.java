@@ -32,18 +32,18 @@ public class AnalyzeByMap {
      * @return Возвращает список объектов Label (имя ученика и суммарный балл).
      */
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
-        List<Label> averageScores = new ArrayList<>();
+        List<Label> avgScores = new ArrayList<>();
         for (Pupil pupil : pupils) {
             int totalPupilScore = 0;
             List<Subject> subjects = pupil.subjects();
             for (Subject subject : subjects) {
                 totalPupilScore += subject.score();
             }
-            double averagePupilScore = subjects.isEmpty() ? 0
+            double avgPupilScore = subjects.isEmpty() ? 0
                     : (double) totalPupilScore / subjects.size();
-            averageScores.add(new Label(pupil.name(), averagePupilScore));
+            avgScores.add(new Label(pupil.name(), avgPupilScore));
         }
-        return averageScores;
+        return avgScores;
     }
 
     /**
@@ -62,14 +62,14 @@ public class AnalyzeByMap {
                 subjectCount.merge(subjectName, 1, Integer::sum);
             }
         }
-        List<Label> averageScores = new ArrayList<>();
+        List<Label> avgScores = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : subjectScoresSum.entrySet()) {
             int count = subjectCount.get(entry.getKey());
-            double averageSubjectScore = count == 0 ? 0
+            double avgSubjectScore = count == 0 ? 0
                     : (double) entry.getValue() / count;
-            averageScores.add(new Label(entry.getKey(), averageSubjectScore));
+            avgScores.add(new Label(entry.getKey(), avgSubjectScore));
         }
-        return averageScores;
+        return avgScores;
     }
 
     /**
