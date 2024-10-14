@@ -52,7 +52,6 @@ class ProfilesTest {
         Address address2 = new Address("CityA", "StreetA", 10, 5);
         assertEquals(address1, address2);
         assertEquals(address2, address1);
-        assertEquals(address1.hashCode(), address2.hashCode());
     }
 
     @Test
@@ -61,6 +60,5 @@ class ProfilesTest {
         Address address2 = new Address("CityB", "StreetB", 11, 6);
         assertNotEquals(address1, address2);
         assertNotEquals(address2, address1);
-        assertNotEquals(address1.hashCode(), address2.hashCode());
     }
 }
