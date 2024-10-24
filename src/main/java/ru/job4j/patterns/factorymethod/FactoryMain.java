@@ -1,4 +1,4 @@
-package ru.job4j.factorymethod;
+package ru.job4j.patterns.factorymethod;
 
 public class FactoryMain {
     public static void main(String[] args) {

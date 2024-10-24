@@ -1,4 +1,4 @@
-package ru.job4j.strategy;
+package ru.job4j.patterns.strategy;
 
 public class PaintMain {
     public void draw(Shape shape) {

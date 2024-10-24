@@ -1,4 +1,4 @@
-package ru.job4j.factorymethod;
+package ru.job4j.patterns.factorymethod;
 
 public class ConcreteCreatorB extends Creator {
     @Override

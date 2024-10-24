@@ -1,4 +1,4 @@
-package ru.job4j.factorymethod.shape;
+package ru.job4j.patterns.factorymethod.shape;
 
 import java.util.Scanner;
 
