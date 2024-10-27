@@ -7,7 +7,7 @@ public class Pipeline {
         Stream.of("one", "two", "three")
                 .filter(x -> {
                     System.out.print(x);
-                    return x.length() <= 3;
+                    return x.length() < 4;
                 })
                 .map(x -> {
                     System.out.println(x);
@@ -20,7 +20,7 @@ public class Pipeline {
         Stream.of("one", "two", "three")
                 .filter(x -> {
                     System.out.print(x);
-                    return x.length() <= 3;
+                    return x.length() < 4;
                 })
                 .map(x -> {
                     System.out.println(x);
