@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class GroupingBy {
 
-    public static void main(String[] args) {
+    public record Worker(String name, int age, int salary, String position) {
+    }
 
-        record Worker(String name, int age, int salary, String position) {
-        }
+    public static void main(String[] args) {
 
         List<Worker> workers = List.of(
                 new Worker("name1", 21, 2100, "Junior"),
@@ -24,35 +24,100 @@ public class GroupingBy {
                 new Worker("name9", 43, 4300, "Senior")
         );
 
+        System.out.println("Группировка списка рабочих по их должности (деление на списки):");
+        groupingByPositionToList(workers);
+
+        System.out.println("Группировка списка рабочих по их должности (деление на множества):");
+        groupingByPositionToSet(workers);
+
+        System.out.println("Подсчёт количества рабочих, занимаемых конкретную должность:");
+        groupingByPositionAndCounting(workers);
+
+        System.out.println("Группировка списка рабочих по их должности, только имена:");
+        groupingByPositionAndGetNames(workers);
+
+        System.out.println("Расчет средней зарплаты для данной должности:");
+        groupingByPositionAndGetAverageSalary(workers);
+
+        System.out.println("Группировка списка рабочих по их должности, "
+                + "рабочие представлены только именами единой строкой");
+        groupingByPositionAndGetNamesAsString(workers);
+
+        System.out.println("Группировка списка рабочих по их должности и по возрасту:");
+        groupingByPositionAndAge(workers);
+    }
+
+    /**
+     * Группировка списка рабочих по их должности (деление на списки).
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionToList(List<Worker> workers) {
+        Map<String, List<Worker>> map = workers.stream()
+                .collect(Collectors.groupingBy(Worker::position));
+        System.out.println(map);
+    }
+
+    /**
+     * Группировка списка рабочих по их должности (деление на множества)
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionToSet(List<Worker> workers) {
+        Map<String, Set<Worker>> map = workers.stream()
+                .collect(Collectors.groupingBy(Worker::position, Collectors.toSet()));
+        System.out.println(map);
+    }
+
+    /**
+     * Подсчёт количества рабочих, занимаемых конкретную должность.
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionAndCounting(List<Worker> workers) {
         Map<String, Long> groups = workers.stream()
                 .collect(Collectors.groupingBy(
                         Worker::position,
                         Collectors.counting()
                 ));
         System.out.println(groups);
+    }
 
-        Map<String, Set<Worker>> map2 = workers.stream()
-                .collect(Collectors.groupingBy(
-                        Worker::position,
-                        Collectors.toSet()
-                ));
-        System.out.println(map2);
-
-        Map<String, Set<String>> map3 = workers.stream()
-                .collect(Collectors.groupingBy(
-                        Worker::position,
+    /**
+     * Группировка списка рабочих по их должности, при этом нас интересуют только имена.
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionAndGetNames(List<Worker> workers) {
+        Map<String, Set<String>> map = workers.stream()
+                .collect(Collectors.groupingBy(Worker::position,
                         Collectors.mapping(Worker::name, Collectors.toSet())
                 ));
-        System.out.println(map3);
+        System.out.println(map);
+    }
 
-        Map<String, Double> map4 = workers.stream()
+    /**
+     * Расчет средней зарплаты для данной должности.
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionAndGetAverageSalary(List<Worker> workers) {
+        Map<String, Double> map = workers.stream()
                 .collect(Collectors.groupingBy(
                         Worker::position,
                         Collectors.averagingInt(Worker::salary)
                 ));
-        System.out.println(map4);
+        System.out.println(map);
+    }
 
-        Map<String, String> map5 = workers.stream()
+    /**
+     * Группировка списка рабочих по их должности,
+     * рабочие представлены только именами единой строкой.
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionAndGetNamesAsString(List<Worker> workers) {
+        Map<String, String> map = workers.stream()
                 .collect(Collectors.groupingBy(
                                 Worker::position,
                                 Collectors.mapping(
@@ -61,11 +126,20 @@ public class GroupingBy {
                                 )
                         )
                 );
-        System.out.println(map5);
+        System.out.println(map);
 
-        Map<String, Map<Integer, List<Worker>>> collect = workers.stream()
+    }
+
+    /**
+     * Группировка списка рабочих по их должности и по возрасту.
+     *
+     * @param workers список рабочих.
+     */
+    public static void groupingByPositionAndAge(List<Worker> workers) {
+        Map<String, Map<Integer, List<Worker>>> map = workers.stream()
                 .collect(Collectors.groupingBy(Worker::position,
                         Collectors.groupingBy(Worker::age)));
-        System.out.println(collect);
+        System.out.println(map);
     }
+
 }
