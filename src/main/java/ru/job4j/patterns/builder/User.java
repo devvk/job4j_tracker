@@ -80,7 +80,8 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User user = new Builder().buildName("Alex")
+        User user = new Builder()
+                .buildName("Alex")
                 .buildSurname("surname")
                 .buildAge((byte) 32)
                 .buildLogin("login")
