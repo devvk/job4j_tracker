@@ -1,6 +1,6 @@
 package ru.job4j.patterns.singleton;
 
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.MemTracker;
 
 /**
  * Eager loading.
@@ -10,17 +10,17 @@ import ru.job4j.tracker.Tracker;
 public enum TrackerSingleEnum {
     INSTANCE;
 
-    private final Tracker tracker;
+    private final MemTracker tracker;
 
     TrackerSingleEnum() {
-        this.tracker = new Tracker();
+        this.tracker = new MemTracker();
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 
     public static void main(String[] args) {
-        Tracker tracker = TrackerSingleEnum.INSTANCE.getTracker();
+        MemTracker tracker = TrackerSingleEnum.INSTANCE.getTracker();
     }
 }

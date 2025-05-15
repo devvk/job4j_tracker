@@ -1,6 +1,6 @@
 package ru.job4j.patterns.singleton;
 
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.MemTracker;
 
 /**
  * Ленивая загрузка (Lazy loading) происходит, когда мы явно обращаемся к объекту.
@@ -11,7 +11,7 @@ import ru.job4j.tracker.Tracker;
  */
 public class TrackerSingleLazy {
 
-    private static Tracker instance;
+    private static MemTracker instance;
 
     private TrackerSingleLazy() {
     }
@@ -20,14 +20,14 @@ public class TrackerSingleLazy {
      * Метод проверяет статическое поле instance,
      * если поле не загружено, оно инициализируется новосозданным объектом.
      */
-    public static Tracker getInstance() {
+    public static MemTracker getInstance() {
         if (instance == null) {
-            instance = new Tracker();
+            instance = new MemTracker();
         }
         return instance;
     }
 
     public static void main(String[] args) {
-        Tracker tracker = TrackerSingleLazy.getInstance();
+        MemTracker tracker = TrackerSingleLazy.getInstance();
     }
 }

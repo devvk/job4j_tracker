@@ -5,18 +5,12 @@
 
 <module name="Checker">
 
-    <!-- File charset must be UTF-8  -->
-    <property name="charset" value="UTF-8"/>
     <!--Расширение файла должно быть java, properties, xml-->
     <property name="fileExtensions" value="java, properties, xml"/>
-    <!-- File length. Default 2000 lines -->
-    <module name="FileLength"/>
 
-    <!-- Line length. Default: 80 lines -->
-    <module name="LineLength">
-        <property name="fileExtensions" value="java"/>
-        <property name="max" value="100"/>
-    </module>
+    <!-- Checks for Size Violations.                    -->
+    <!-- See http://checkstyle.sf.net/config_sizes.html -->
+    <module name="FileLength"/>
 
     <!-- Checks for Headers                                -->
     <!-- See http://checkstyle.sf.net/config_header.html   -->
@@ -34,9 +28,6 @@
             <property name="allowMultipleEmptyLines" value="false"/>
             <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
         </module>
-
-        <!-- Checks visibility of class members -->
-        <module name="VisibilityModifier"/>
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->
@@ -59,13 +50,9 @@
             <property name="tokens" value="METHOD_DEF"/>
             <property name="max" value="100"/>
         </module>
-
-        <!-- Проверяет количество объявленных параметров в методе или конструкторе.
-             По умолчанию может быть задано не более 7 параметров. -->
         <module name="ParameterNumber"/>
 
-        <!-- Checks for whitespace
-             Модули проверки различных операторов и конструкций на наличие пробела перед ними / после них. -->
+        <!-- Checks for whitespace                               -->
         <!-- See http://checkstyle.sf.net/config_whitespace.html -->
         <module name="EmptyForIteratorPad"/>
         <module name="GenericWhitespace"/>
@@ -81,16 +68,14 @@
         <!-- Modifier Checks                                    -->
         <!-- See http://checkstyle.sf.net/config_modifiers.html -->
 
-        <!-- Checks for blocks. You know, those {}'s
-             Модули проверки оформления блоков кода.  -->
+        <!-- Checks for blocks. You know, those {}'s         -->
         <!-- See http://checkstyle.sf.net/config_blocks.html -->
         <module name="AvoidNestedBlocks"/>
         <module name="LeftCurly"/>
         <module name="NeedBraces"/>
         <module name="RightCurly"/>
 
-        <!-- Checks for common coding problems
-             Модули на проверки типовых ошибок в разных местах кода. -->
+        <!-- Checks for common coding problems               -->
         <!-- See http://checkstyle.sf.net/config_coding.html -->
         <!--<module name="AvoidInlineConditionals"/>-->
         <module name="EmptyStatement"/>

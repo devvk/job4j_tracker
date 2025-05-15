@@ -1,6 +1,6 @@
 package ru.job4j.patterns.singleton;
 
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.MemTracker;
 
 /**
  * Тоже самое, что и с static field. Lazy loading.
@@ -8,16 +8,16 @@ import ru.job4j.tracker.Tracker;
  * Энергичная загрузка (Eager loading) - загружает объект сразу после старта виртуальной машины.
  */
 public class TrackerSingleStaticEager {
-    private static final Tracker INSTANCE = new Tracker();
+    private static final MemTracker INSTANCE = new MemTracker();
 
     private TrackerSingleStaticEager() {
     }
 
-    public static Tracker getInstance() {
+    public static MemTracker getInstance() {
         return INSTANCE;
     }
 
     public static void main(String[] args) {
-        Tracker tracker = TrackerSingleStaticEager.getInstance();
+        MemTracker tracker = TrackerSingleStaticEager.getInstance();
     }
 }

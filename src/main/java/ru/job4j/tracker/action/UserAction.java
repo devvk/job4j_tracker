@@ -1,6 +1,6 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.Store;
 import ru.job4j.tracker.io.Input;
 
 public interface UserAction {
@@ -11,5 +11,5 @@ public interface UserAction {
      * Метод возвращает boolean, чтобы создать действия выхода из программы.
      * Если действие вернуло false, то мы считаем, что пользователь вышел из системы.
      */
-    boolean execute(Input input, Tracker tracker);
+    boolean execute(Input input, Store tracker);
 }
