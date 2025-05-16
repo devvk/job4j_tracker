@@ -14,6 +14,10 @@ public class SqlTracker implements Store {
         init();
     }
 
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
+
     /**
      * Инициализирует соединение с БД.
      */

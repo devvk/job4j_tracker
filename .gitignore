@@ -27,3 +27,7 @@ hs_err_pid*
 
 target
 out
+
+# H2 database files
+*.mv.db
+*.trace.db
