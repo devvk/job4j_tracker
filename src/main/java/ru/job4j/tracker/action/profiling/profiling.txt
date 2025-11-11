@@ -1,0 +1,69 @@
+АНАЛИЗ ПАМЯТИ (Профилирование MemTracker)
+
+1. Начальное состояние при старте MemTracker:
+
+jmap -histo:live 12040 > on-start-jmap.txt
+В памяти только системные объекты, объектов MemTracker еще нет.
+
+jstat -gc 12040 1s 30 > on-start-jstat.txt
+
+EU (Eden Used): 10 MB
+OU (Old Used): 1.1 MB
+YGC (Young GC Count): 1
+FGC (Full GC Count): 0	
+GCT (Total GC Time): 0.005s 
+
+2. После добавления 100к заявок в MemTracker (CreateManyItems):
+
+jmap -histo:live 12040 > after-create-jmap.txt
+В памяти появились новые объекты MemTracker:
+112995        2711880  java.lang.String (java.base@21.0.2)
+100130        2403120  java.time.LocalDateTime (java.base@21.0.2)
+100069        2401656  java.time.LocalDate (java.base@21.0.2)
+100026        2400624  java.time.LocalTime (java.base@21.0.2)
+100000        2400000  ru.job4j.tracker.Item
+
+jstat -gc 12040 1s 30 > after-create-jstat.txt
+
+EU (Eden Used): 7.1 MB (Eden частично очищен minor GC)
+OU (Old Used): 12.8 MB (часть объектов промотирована в Old)
+YGC (Young GC Count): 2
+FGC (Full GC Count): 1	
+GCT (Total GC Time): 0.030s 
+
+3. После удаления 100к заявок из MemTracker (DeleteAllItems):
+
+jmap -histo:live 12040 > after-delete-jmap.txt
+Объекты MemTracker были удалены GC, состояние памяти близко к состоянию при старте.
+
+jstat -gc 12040 1s 30 > after-delete-jstat.txt
+
+EU (Eden Used): 1 MB
+OU (Old Used): 20.5 MB
+YGC (Young GC Count): 2
+FGC (Full GC Count): 2	
+GCT (Total GC Time): 0.050s 
+
+ИТОГИ:
+На старте заполнение Eden было 10 MB. После добавления 100к заявок в MemTracker Eden
+занял 7 MB (часть объектов после GC ушла в Old). После удаления 100к заявок 1 MB.
+Всего было 2 minor GC и 2 full GC. Суммарное время работы GC - 0.050s.
+
+4. Переполнение памяти OutOfMemoryError:
+
+Введите кол-во заявок: 1000000
+java.lang.OutOfMemoryError: Java heap space
+Dumping heap to heap.hprof ...
+Heap dump file created [49103619 bytes in 0.682 secs]
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+
+Параметры запуска JVM были:
+-Xms32m
+-Xmx32m
+-Xlog:gc*,safepoint:file=gc.log:tags,uptime,level,timemillis
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=heap.hprof
+-XX:StartFlightRecording=filename=tracker-baseline.jfr,settings=profile,dumponexit=true
+
+Анализ дампа heap.hprof в JDK Mission Control показал в момент OutOfMemoryError: память занята в основном:
+String 38%, LocalDateTime 14%, Item 14%, LocalDate 11%, LocalTime 11% , ArrayList 3%, остальное системные объекты.
