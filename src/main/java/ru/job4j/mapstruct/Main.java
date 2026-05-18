@@ -22,13 +22,9 @@ public class Main {
         StudentEntity fromDto = studentMapper.getEntityFromDto(studentDto);
         System.out.println(fromDto);
 
-
         DeliveryAddressMapper deliveryAddressMapper = Mappers.getMapper(DeliveryAddressMapper.class);
         AddressEntity address = new AddressEntity(100, "cityGood", "stateNew");
         DeliveryAddressDto deliveryAddressDto = deliveryAddressMapper.getDeliveryAddress(studentEntity, address);
         System.out.println(deliveryAddressDto);
-
-
-
     }
 }
