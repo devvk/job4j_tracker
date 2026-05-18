@@ -1,7 +1,9 @@
 package ru.job4j.tracker;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -11,10 +13,15 @@ import java.util.Objects;
  * Поле id - это уникальный номер заявления.
  * Поле name содержит название заявления.
  */
+@Entity
+@Table(name = "items")
 @Data
+@NoArgsConstructor
 public class Item {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
     private static final DateTimeFormatter FORMATTER =
@@ -47,7 +54,7 @@ public class Item {
         if (!(o instanceof Item item)) {
             return false;
         }
-        return id == item.id && Objects.equals(name, item.name);
+        return Objects.equals(id, item.id) && Objects.equals(name, item.name);
     }
 
     @Override
